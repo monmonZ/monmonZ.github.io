@@ -35,13 +35,13 @@
   </article>
   <script type="text/javascript">
     $('input[type="range"]').on('change', function() {
-      let red = $('input[name="red"]').val().toString(16);
-      let blue = $('input[name="blue"]').val().toString(16);
-      let green = $('input[name="green"]').val().toString(16);
+      let red = parseInt($('input[name="red"]').val(), 10).toString(16);
+      let blue = parseInt($('input[name="blue"]').val(), 10).toString(16);
+      let green = parseInt($('input[name="green"]').val(), 10).toString(16);
       $('input[name="color_code"]').val(red + blue + green).change();
     });
     $('input[name="color_code"]').on('change', function(e) {
-        $(e.target).closest("div").css("background-color", $(e.target).val());
+        $(e.target).closest("div").css("background-color", "#"+ $(e.target).val());
     });
   </script>
 </body>
