@@ -34,10 +34,16 @@
   </section>
   </article>
   <script type="text/javascript">
+    function convertTo16decimalString(rangeValue) {
+        if (rangeValue === null) {
+        return "00";
+        }
+        return ("00" + parseInt(rangeValue, 10).toString(16)).slice( -2 );
+    };
     $('input[type="range"]').on('change', function() {
-      let red = parseInt($('input[name="red"]').val(), 10).toString(16);
-      let blue = parseInt($('input[name="blue"]').val(), 10).toString(16);
-      let green = parseInt($('input[name="green"]').val(), 10).toString(16);
+      let red = convertTo16decimalString($('input[name="red"]').val());
+      let blue = convertTo16decimalString($('input[name="blue"]').val());
+      let green = convertTo16decimalString($('input[name="green"]').val());
       $('input[name="color_code"]').val(red + blue + green).change();
     });
     $('input[name="color_code"]').on('change', function(e) {
