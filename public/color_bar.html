@@ -1,11 +1,11 @@
 <!doctype html>
 <html>
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
   <title>Color Bar</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.1.2/css/bulma.css">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/font-awesome/4.6.3/css/font-awesome.min.css">
+  <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.1/build/pure-min.css" integrity="sha384-oAOxQR6DkCoMliIh8yFnu25d7Eq/PHS21PClpwjOTeU2jRSq11vu66rf90/cZr47" crossorigin="anonymous">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 </head>
 <body>
   <article>
@@ -17,11 +17,13 @@
       </label>
     </div>
     <div>
+      <h2>Green</h2>
       <label>
         <input type="range" min="0" max="255" name="green">
       </label>
     </div>
     <div>
+      <h2>Blue</h2>
       <label>
         <input type="range" min="0" max="255" name="blue">
       </label>
@@ -31,5 +33,16 @@
     <div style="height:120px; weight: 80%;"><input type="text" name="color_code" value="000000"></div>
   </section>
   </article>
+  <script type="text/javascript">
+    $('input[type="range"]').on('change', function() {
+      let red = $('input[name="red"]').val().toString(16);
+      let blue = $('input[name="blue"]').val().toString(16);
+      let green = $('input[name="green"]').val().toString(16);
+      $('input[name="color_code"]').val(red + blue + green).change();
+    });
+    $('input[name="color_code"]').on('change', function(e) {
+        $(e.target).closest("div").css("background-color", $(e.target).val());
+    });
+  </script>
 </body>
 </html>
